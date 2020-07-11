@@ -537,6 +537,11 @@ public final class TerminalView extends View {
                 }
             }
         }
+        // Fix for Issue #1333 related to CNTRL+SPACE on emacs
+        else if (keyCode == KeyEvent.KEYCODE_SPACE && event.isCtrlPressed()){
+            return onKeyDown(keyCode, event);
+        }
+
         return super.onKeyPreIme(keyCode, event);
     }
 
